@@ -2,6 +2,8 @@ package Entities;
 
 public class Necromancer extends Enemy{
 
+    public static final int ID = 12;
+
     private final int DEFAULT_NUM_MINIONS = 1;
     private final boolean DEFAULT_ELITE  = false;
 
@@ -22,10 +24,9 @@ public class Necromancer extends Enemy{
 
     @Override
     public String toString() {
-        String elite = this.elite ? "yes" : "no";
         return super.toString()
                 +"\nMax Number of Minions: " + numMinions
-                +"\nElite: " + elite;
+                +"\nElite: " + (elite ? "Yes" : "No");
     }
 
     @Override

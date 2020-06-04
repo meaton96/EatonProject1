@@ -1,10 +1,10 @@
-import Entities.Enemy;
+import Entities.*;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        Enemy enemy1 = new Enemy();
+        Rogue enemy1 = new Rogue();
         System.out.println(enemy1);
     }
 }

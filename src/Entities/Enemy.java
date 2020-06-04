@@ -1,6 +1,8 @@
 package Entities;
 
-public class Enemy extends Entity{
+public abstract class Enemy extends Entity{
+
+    public static final int ID = 1;
 
     private final String DEFAULT_DAMAGE_TYPE = "Physical";
     private final int DEFAULT_DAMAGE_LEVEL = 1;
@@ -8,13 +10,13 @@ public class Enemy extends Entity{
     private String damageType;
     private int damageLevel;
 
-    public Enemy() {
+    protected Enemy() {
         super();
         damageLevel = DEFAULT_DAMAGE_LEVEL;
         damageType = DEFAULT_DAMAGE_TYPE;
     }
 
-    public Enemy(String name, int lives, int health, String damageType, int damageLevel) {
+    protected Enemy(String name, int lives, int health, String damageType, int damageLevel) {
         super(name, lives, health);
         this.damageLevel = damageLevel;
         this.damageType = damageType;

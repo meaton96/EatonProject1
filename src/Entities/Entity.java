@@ -1,6 +1,8 @@
 package Entities;
 
-public class Entity {
+public abstract class Entity {
+
+    public static final int ID = 0;
 
     private static int numEntities;
     private final int BASE_LIVES = 1, BASE_HEALTH = 100;
@@ -8,13 +10,19 @@ public class Entity {
     private String name;
     private int lives, health;
 
-    Entity() {
+    protected Entity() {
         numEntities++;
-        name = String.valueOf(numEntities);
+        name = getClass().getSimpleName() + " " + String.valueOf(numEntities);
         lives = BASE_LIVES;
         health = BASE_HEALTH;
     }
-    Entity(String name, int lives, int health) {
+
+    /**
+     * @param name
+     * @param lives
+     * @param health
+     */
+    protected Entity(String name, int lives, int health) {
         numEntities++;
         this.name = name;
         this.lives = lives;

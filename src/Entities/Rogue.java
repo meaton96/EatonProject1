@@ -2,6 +2,8 @@ package Entities;
 
 public class Rogue extends Enemy{
 
+    public static final int ID = 11;
+
     private final int DEFAULT_SNEAK = 1;
     private final boolean DEFAULT_MASTER = false;
 
@@ -22,10 +24,10 @@ public class Rogue extends Enemy{
 
     @Override
     public String toString() {
-        String mastery = master ? "yes" : "no";
+        //String mastery = ;
         return super.toString()
-                + "\n Sneak Level: " + sneakLevel
-                + "\n Masterful: " + mastery;
+                + "\nSneak Level: " + sneakLevel
+                + "\nMasterful: " + (master ? "Yes" : "No");
     }
 
     @Override

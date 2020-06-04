@@ -1,6 +1,8 @@
 package Entities;
 
-public class NPC extends Entity {
+public abstract class NPC extends Entity {
+
+    public static final int ID = 2;
 
     private final String DEFAULT_SKILL = "Heal";
     private final int DEFAULT_SKILL_LEVEL = 1;
@@ -8,13 +10,13 @@ public class NPC extends Entity {
     private String helpfulSkill;
     private int skillLevel;
 
-    public NPC() {
+    protected NPC() {
         super();
         this.helpfulSkill = DEFAULT_SKILL;
         this.skillLevel = DEFAULT_SKILL_LEVEL;
     }
 
-    public NPC(String name, int lives, int health, String helpfulSkill, int skillLevel) {
+    protected NPC(String name, int lives, int health, String helpfulSkill, int skillLevel) {
         super(name, lives, health);
         this.helpfulSkill = helpfulSkill;
         this.skillLevel = skillLevel;
