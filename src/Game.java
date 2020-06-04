@@ -10,12 +10,11 @@ public class Game {
     private final String[] ENTITY_NAME_LIST = {"Mage", "Necromancer", "Rogue", "Trainer"};
 
     private ArrayList<Entity> entities;
-    BufferedReader reader;
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     Game() {
 
-        entities = new ArrayList<Entity>();
-        reader = new BufferedReader(new InputStreamReader(System.in));
+        entities = new ArrayList<>();
 
     }
 
@@ -43,7 +42,7 @@ public class Game {
             break;
             case 5 :
                 System.out.println("Ending Program");
-            return;
+            break;
         }
     }
 
@@ -52,23 +51,25 @@ public class Game {
 
     }
 
+    /**
+     * remove an entity from the list
+     * get user input for name of entity, compare to the list
+     * and delete from list if it exists
+     */
     public void removeEntity() {
         String name;
         System.out.println("Enter entity's name for deletion: ");
         name = getUserInputAnswer();
 
-        for (Entity e : entities) {
-            if (name.equals(e.getName())) {
-                entities.remove(e);
-                System.out.println("Entity " + name + " was successfully removed from the list");
-                return;
-            }
+        if (entities.remove(findEntityInList(name))) {
+            System.out.println("Entity " + name + " was successfully removed from the list");
+            return;
         }
         System.out.println("Entity " + name + " was not found in the list would you like to try entering the name again? (Enter y/n)");
         char c = ' ';
-        while (c != 'y' || c != 'n') {
+        while (c != 'y' && c != 'n') {
             c = getUserInputAnswer().charAt(0);
-            if (c != 'y' || c != 'n')
+            if (c != 'y' && c != 'n')
                 System.out.println("Invalid input enter y/n");
         }
         if (c == 'y')
@@ -77,6 +78,24 @@ public class Game {
         displayMenu();
     }
 
+    /**
+     *
+     * @param name String to search the list for
+     * @return the Entity in the list if it exists
+     *              if it doesn't exist return null
+     */
+    private Entity findEntityInList(String name) {
+        for (Entity x : entities) {
+            if (x.equals(name))
+                return x;
+        }
+        return null;
+    }
+
+    /**
+     * display choices of entities for adding to the list
+     *
+     */
     public void addEntityMenu() {
 
 
@@ -101,8 +120,8 @@ public class Game {
             break;
         }
         entities.add(entityToAdd);
-
-        System.out.println("\nEntity: " + entityToAdd.getName() + " successfully added to list\n");
+        if (entityToAdd != null)
+            System.out.println("\nEntity: " + entityToAdd.getName() + " successfully added to list\n");
         displayMenu();
     }
 
@@ -192,15 +211,12 @@ public class Game {
                     sneakLevel = Integer.parseInt(getUserInputAnswer());
                     System.out.println("Is " + name + " a master? (Enter y/n)");
                     char c = ' ';
-                    while (c != 'y' || c != 'n') {
+                    while (c != 'y' && c != 'n') {
                         c = getUserInputAnswer().charAt(0);
-                        if (c != 'y' || c != 'n')
+                        if (c != 'y' && c != 'n')
                             System.out.println("Invalid input enter y/n");
                     }
-                    if (c == 'y')
-                        master = true;
-                    else
-                        master = false;
+                    master = c == 'y';
 
                     return new Rogue(name, lives, health, damageType, damageLevel, sneakLevel, master);
 
@@ -213,15 +229,12 @@ public class Game {
                     numMinions = Integer.parseInt(getUserInputAnswer());
                     System.out.println("Is " + name + "elite? (Enter y/n)");
                     c = ' ';
-                    while (c != 'y' || c != 'n') {
+                    while (c != 'y' && c != 'n') {
                         c = getUserInputAnswer().charAt(0);
-                        if (c != 'y' || c != 'n')
+                        if (c != 'y' && c != 'n')
                             System.out.println("Invalid input enter y/n");
                     }
-                    if (c == 'y')
-                        elite = true;
-                    else
-                        elite = false;
+                    elite = c == 'y';
 
                     return new Necromancer(name, lives, health, damageType, damageLevel, elite, numMinions);
 
@@ -237,6 +250,11 @@ public class Game {
         return null;
     }
 
+    /**
+     *
+     * @param x integer to reduce to 1 digit
+     * @return integer the first digit of the parameter
+     */
     private int firstDigit(int x) {
         while (x > 9) {
             x /= 10;
@@ -244,6 +262,10 @@ public class Game {
         return x;
     }
 
+    /**
+     * get one line of input from the user
+     * @return the string input from the user
+     */
     private String getUserInputAnswer() {
 
         String inputString = "";
@@ -257,6 +279,9 @@ public class Game {
         return inputString;
     }
 
+    /**
+     * print the list of entities
+     */
     public void printEntities() {
 
         for (Entity e : entities) {

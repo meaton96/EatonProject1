@@ -6,6 +6,9 @@ public abstract class Entity {
 
     private static int numEntities;
     private final int BASE_LIVES = 1, BASE_HEALTH = 100;
+    private int idNum;
+
+
 
     private String name;
     private int lives, health;
@@ -46,6 +49,10 @@ public abstract class Entity {
     }
 
 
+    public boolean equals(String otherName) {
+        return this.getName().toLowerCase().equals(otherName.toLowerCase());
+    }
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -55,5 +62,6 @@ public abstract class Entity {
     public int getHealth() { return health; }
     public void setHealth(int health) { this.health = health; }
 
-    public static int getNumEntities() { return numEntities; }
+    //public static int getNumEntities() { return numEntities; }
+    public int getIdNum() { return idNum; }
 }
