@@ -53,6 +53,7 @@ public class Game {
     }
 
     public void removeEntity() {
+        //Todo add handling for uppercase lowercase management
         String name;
         System.out.println("Enter entity's name for deletion: ");
         name = getUserInputAnswer();
