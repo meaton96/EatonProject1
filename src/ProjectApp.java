@@ -156,6 +156,18 @@ public class ProjectApp {
 
         System.out.println("Enter Entity name: ");
         name = getUserInputAnswer();
+
+        for (int x = 0; x < name.length(); x++) {
+            char c = name.charAt(x);
+
+            if ((c < 65 || c > 122) || (c > 90 && c < 97)) {
+                System.out.println("Please only enter letters for entity names" +
+                        "\nPlease start over\n");
+                getEntityInformation(entityID);
+            }
+
+        }
+
         System.out.println("Enter Entity Lives: ");
         lives = Integer.parseInt(getUserInputAnswer());
         System.out.println("Enter Entity Health: ");
