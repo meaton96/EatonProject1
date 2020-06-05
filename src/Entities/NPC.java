@@ -35,18 +35,15 @@ public abstract class NPC extends Entity {
     public int getSkillLevel() { return skillLevel; }
     public void setSkillLevel(int skillLevel) { this.skillLevel = skillLevel; }
 
-    @Override
     public void ready() {
-        super.ready();
+
     }
 
-    @Override
     public void speak() {
-        super.speak();
+
     }
 
-    @Override
     public void move() {
-        super.move();
+
     }
 }

@@ -37,18 +37,17 @@ public abstract class Enemy extends Entity{
                 + "\nDamage Level: " + damageLevel;
     }
 
-    @Override
     public void ready() {
-        super.ready();
+
     }
 
-    @Override
+
     public void speak() {
-        super.speak();
+
     }
 
-    @Override
+
     public void move() {
-        super.move();
+
     }
 }

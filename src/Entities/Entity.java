@@ -15,7 +15,7 @@ public abstract class Entity {
 
     protected Entity() {
         numEntities++;
-        name = getClass().getSimpleName() + " " + String.valueOf(numEntities);
+        name = getClass().getSimpleName() + " " + numEntities;
         lives = BASE_LIVES;
         health = BASE_HEALTH;
     }
@@ -30,16 +30,6 @@ public abstract class Entity {
         this.name = name;
         this.lives = lives;
         this.health = health;
-    }
-
-    public void ready() {
-        System.out.println(name + " is ready");
-    }
-    public void speak() {
-        System.out.println(name + " is speaking");
-    }
-    public void move() {
-        System.out.println(name + " is moving");
     }
 
     public String toString() {
