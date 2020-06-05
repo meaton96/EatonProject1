@@ -1,4 +1,6 @@
-package Entities;
+package entities.npc;
+
+import util.UserInputHelper;
 
 public class Trainer extends NPC{
 
@@ -15,18 +17,27 @@ public class Trainer extends NPC{
     }
 
     @Override
+    public Trainer build() {
+        super.build();
+
+        System.out.println("Enter " + getName() + "'s expertise (area of study): ");
+        expertise = UserInputHelper.getStringInput();
+
+        return this;
+    }
+
     public void ready() {
-        super.ready();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " is ready to teach new spells");
     }
 
-    @Override
+
     public void speak() {
-        super.speak();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " says \"An'u belore delen'na.\"");
     }
 
-    @Override
+
     public void move() {
-        super.move();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " moves to a new location");
     }
 
     public Trainer() {

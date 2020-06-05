@@ -1,4 +1,7 @@
-package Entities;
+package entities.npc;
+
+import entities.Entity;
+import util.UserInputHelper;
 
 public abstract class NPC extends Entity {
 
@@ -23,6 +26,20 @@ public abstract class NPC extends Entity {
     }
 
     @Override
+    public NPC build() {
+        super.build();
+
+        System.out.println("Enter " + getName() + "'s helpful skill name: ");
+        helpfulSkill = UserInputHelper.getStringInput();
+
+        skillLevel = UserInputHelper.INVALID_INPUT;
+
+        while (skillLevel == UserInputHelper.INVALID_INPUT)
+            skillLevel = UserInputHelper.getIntInput();
+        return this;
+    }
+
+    @Override
     public String toString() {
         return super.toString()
                 + "\nSkill: " + helpfulSkill
@@ -35,15 +52,5 @@ public abstract class NPC extends Entity {
     public int getSkillLevel() { return skillLevel; }
     public void setSkillLevel(int skillLevel) { this.skillLevel = skillLevel; }
 
-    public void ready() {
 
-    }
-
-    public void speak() {
-
-    }
-
-    public void move() {
-
-    }
 }

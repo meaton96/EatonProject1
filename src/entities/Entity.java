@@ -1,4 +1,6 @@
-package Entities;
+package entities;
+
+import util.UserInputHelper;
 
 public abstract class Entity {
 
@@ -37,6 +39,38 @@ public abstract class Entity {
                 + "\nLives: " + lives
                 + "\nHealth: " + health;
     }
+
+    public Entity build() {
+        System.out.println("Enter Entity name: ");
+        name = UserInputHelper.getStringInput();
+
+        for (int x = 0; x < name.length(); x++) {
+            char c = name.charAt(x);
+
+            if ((c < 65 || c > 122) || (c > 90 && c < 97)) {
+                System.out.println("Please only enter letters for entity names" +
+                        "\nPlease start over\n");
+                build();
+            }
+
+        }
+        System.out.println("Enter Entity Health (integer): ");
+
+        health = UserInputHelper.INVALID_INPUT;
+
+        while (health == UserInputHelper.INVALID_INPUT)
+            health = UserInputHelper.getIntInput();
+
+        System.out.println("Enter Entity Lives (integer): ");
+
+        lives = UserInputHelper.INVALID_INPUT;
+
+        while (lives == UserInputHelper.INVALID_INPUT)
+            lives= UserInputHelper.getIntInput();
+
+        return this;
+    }
+
 
 
     public boolean equals(String otherName) {

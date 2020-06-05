@@ -1,4 +1,10 @@
-import Entities.*;
+import entities.*;
+import entities.enemies.Enemy;
+import entities.enemies.Necromancer;
+import entities.enemies.Rogue;
+import entities.npc.Mage;
+import entities.npc.NPC;
+import entities.npc.Trainer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,8 +40,8 @@ public class ProjectApp {
 
 
         switch (getUserMenuInput(5)) {
-            case -1: displayMenu();
-            break;
+            /*case -1: displayMenu();
+            break;*/
             case 1 : printEntities();
             break;
             case 2 : addEntityMenu();
@@ -77,8 +83,9 @@ public class ProjectApp {
         char c = ' ';
         while (c != 'y' && c != 'n') {
             c = getUserInputAnswer().charAt(0);
-            if (c > 97)
-                c -= 32;
+            if (c < 97)
+                c += 32;
+            System.out.println("**" + c);
             if (c != 'y' && c != 'n')
                 System.out.println("Invalid input enter y/n");
         }
@@ -151,6 +158,22 @@ public class ProjectApp {
      *          object type depends on entityID
      */
     Entity getEntityInformation(int entityID) {
+
+        switch (entityID) {
+            case Rogue.ID :
+                return new Rogue().build();
+            case Necromancer.ID :
+                return new Necromancer().build();
+            case Mage.ID :
+                return new Mage().build();
+            case Trainer.ID :
+                return new Trainer().build();
+            default:
+                break;
+
+        }
+
+        /*
         String name;
         int lives, health;
 
@@ -168,20 +191,20 @@ public class ProjectApp {
 
         }
 
-        System.out.println("Enter Entity Lives: ");
+        System.out.println("Enter Entity Lives (integer): ");
         lives = Integer.parseInt(getUserInputAnswer());
-        System.out.println("Enter Entity Health: ");
+        System.out.println("Enter Entity Health (integer): ");
         health = Integer.parseInt(getUserInputAnswer());
 
 
 
-        /*
+
 
         would much rather init all these values in the classes constructors
         this looks very messy
 
          */
-
+        /*
         switch (firstDigit(entityID)) {
 
             case NPC.ID :
@@ -189,9 +212,9 @@ public class ProjectApp {
                 String helpfulSkill;
                 int skillLevel;
 
-                System.out.println("Enter " + name + "'s helpful skill name");
+                System.out.println("Enter " + name + "'s helpful skill name: ");
                 helpfulSkill = getUserInputAnswer();
-                System.out.println("Enter " + name + "'s skill level: ");
+                System.out.println("Enter " + name + "'s skill level (integer): ");
                 skillLevel = Integer.parseInt(getUserInputAnswer());
 
             switch (entityID) {
@@ -202,7 +225,7 @@ public class ProjectApp {
 
                     System.out.println("Enter " + name + "'s damage type:");
                     damageType = getUserInputAnswer();
-                    System.out.println("Enter " + name + "'s amount of years spent practicing: ");
+                    System.out.println("Enter " + name + "'s amount of years spent practicing (integer): ");
                     yearsPracticing = Integer.parseInt(getUserInputAnswer());
 
                     return new Mage(name, lives, health, helpfulSkill, skillLevel, damageType, yearsPracticing);
@@ -210,7 +233,7 @@ public class ProjectApp {
 
                     String expertise;
 
-                    System.out.println("Enter " + name + "'s expertise");
+                    System.out.println("Enter " + name + "'s expertise (area of study): ");
                     expertise = getUserInputAnswer();
 
                     return new Trainer(name, lives, health, helpfulSkill, skillLevel, expertise);
@@ -226,7 +249,7 @@ public class ProjectApp {
 
                 System.out.println("Enter " + name + "'s damage type: ");
                 damageType = getUserInputAnswer();
-                System.out.println("Enter " + name + "'s damage level");
+                System.out.println("Enter " + name + "'s damage level (integer): ");
                 damageLevel = Integer.parseInt(getUserInputAnswer());
 
             switch (entityID) {
@@ -235,12 +258,14 @@ public class ProjectApp {
                     int sneakLevel;
                     boolean master;
 
-                    System.out.println("Enter " + name + "'s sneak level: ");
+                    System.out.println("Enter " + name + "'s sneak level (integer): ");
                     sneakLevel = Integer.parseInt(getUserInputAnswer());
-                    System.out.println("Is " + name + " a master? (Enter y/n)");
+                    System.out.println("Is " + name + " a master? (Enter y/n): ");
                     char c = ' ';
                     while (c != 'y' && c != 'n') {
                         c = getUserInputAnswer().charAt(0);
+                        if (c < 97)
+                            c += 32;
                         if (c != 'y' && c != 'n')
                             System.out.println("Invalid input enter y/n");
                     }
@@ -253,12 +278,14 @@ public class ProjectApp {
                     int numMinions;
                     boolean elite;
 
-                    System.out.println("Enter " + name + "'s number of minions: ");
+                    System.out.println("Enter " + name + "'s number of minions (integer): ");
                     numMinions = Integer.parseInt(getUserInputAnswer());
-                    System.out.println("Is " + name + "elite? (Enter y/n)");
+                    System.out.println("Is " + name + "elite? (Enter y/n): ");
                     c = ' ';
                     while (c != 'y' && c != 'n') {
                         c = getUserInputAnswer().charAt(0);
+                        if (c < 97)
+                            c += 32;
                         if (c != 'y' && c != 'n')
                             System.out.println("Invalid input enter y/n");
                     }
@@ -275,6 +302,7 @@ public class ProjectApp {
             default:
             break;
         }
+        */
         return null;
     }
 
@@ -334,12 +362,10 @@ public class ProjectApp {
     private int getUserMenuInput(int max) {
 
         try {
+
             String inputString = reader.readLine();
-            if (inputString.charAt(0) < 49 || inputString.charAt(0) > max + 48) {
-                System.out.println("Invalid Input. Enter anything to start over");
-                reader.read();
+            if (inputString.charAt(0) < 49 || inputString.charAt(0) > max + 48)
                 return -1;
-            }
 
             return inputString.charAt(0) - 48;
         }

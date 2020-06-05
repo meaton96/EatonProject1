@@ -1,4 +1,6 @@
-package Entities;
+package entities.npc;
+
+import util.UserInputHelper;
 
 public class Mage extends NPC {
 
@@ -29,18 +31,33 @@ public class Mage extends NPC {
     }
 
     @Override
+    public Mage build() {
+        super.build();
+
+        System.out.println("Enter " + getName() + "'s damage type:");
+        elementType = UserInputHelper.getStringInput();
+
+        System.out.println("Enter " + getName() + "'s amount of years spent practicing (integer): ");
+        yearsPracticing = UserInputHelper.INVALID_INPUT;
+
+        while (yearsPracticing == UserInputHelper.INVALID_INPUT)
+            yearsPracticing = UserInputHelper.getIntInput();
+        return this;
+    }
+
     public void ready() {
-        super.ready();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " is ready to fire off some spells");
+
     }
 
-    @Override
+
     public void speak() {
-        super.speak();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " says \"Sela'ma ashal'anore!\"");
     }
 
-    @Override
+
     public void move() {
-        super.move();
+        System.out.println(getClass().getSimpleName() + " " + getClass() + " moves");
     }
 
     public String getElementType() {

@@ -1,4 +1,6 @@
-package Entities;
+package entities.enemies;
+
+import util.UserInputHelper;
 
 public class Rogue extends Enemy{
 
@@ -7,8 +9,8 @@ public class Rogue extends Enemy{
     private final int DEFAULT_SNEAK = 1;
     private final boolean DEFAULT_MASTER = false;
 
-    int sneakLevel;
-    boolean master;
+    private int sneakLevel;
+    private boolean master;
 
     public Rogue() {
         super();
@@ -24,24 +26,40 @@ public class Rogue extends Enemy{
 
     @Override
     public String toString() {
-        //String mastery = ;
+
         return super.toString()
                 + "\nSneak Level: " + sneakLevel
                 + "\nMasterful: " + (master ? "Yes" : "No");
     }
 
     @Override
+    public Rogue build() {
+        super.build();
+
+        sneakLevel = UserInputHelper.INVALID_INPUT;
+        System.out.println("Enter " + getName() + "'s sneak level (integer): ");
+
+        while (sneakLevel == UserInputHelper.INVALID_INPUT)
+            sneakLevel = UserInputHelper.getIntInput();
+
+        System.out.println("Is " + getName() + " a master? (Enter y/n): ");
+
+        master = UserInputHelper.getBooleanInput();
+
+        return this;
+    }
+
     public void ready() {
-        super.ready();
+        System.out.println(getName() + " is ready for mischief");
     }
 
-    @Override
+
     public void speak() {
-        super.speak();
+        System.out.println(getName() + " is talking quietly");
     }
 
-    @Override
+
     public void move() {
-        super.move();
+        System.out.println(getName() + " is sneaking");
     }
 }

@@ -1,4 +1,6 @@
-package Entities;
+package entities.enemies;
+
+import util.UserInputHelper;
 
 public class Necromancer extends Enemy{
 
@@ -30,17 +32,29 @@ public class Necromancer extends Enemy{
     }
 
     @Override
+    public Necromancer build() {
+        super.build();
+
+        System.out.println("Enter " + getName() + "'s number of minions (integer): ");
+        numMinions = UserInputHelper.getIntInput();
+        System.out.println("Is " + getName() + "elite? (Enter y/n): ");
+        elite = UserInputHelper.getBooleanInput();
+
+        return this;
+    }
+
     public void ready() {
-        super.ready();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " is ready to summon more minions");
     }
 
-    @Override
+
     public void speak() {
-        super.speak();
+        System.out.println(getName() + " says \"the dead shall serve\"");
     }
 
-    @Override
+
     public void move() {
-        super.move();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " moves");
+
     }
 }

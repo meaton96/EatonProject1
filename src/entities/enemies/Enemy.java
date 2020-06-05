@@ -1,6 +1,11 @@
-package Entities;
+package entities.enemies;
 
-public abstract class Enemy extends Entity{
+import entities.Entity;
+import util.UserInputHelper;
+
+import java.net.UnknownServiceException;
+
+public abstract class Enemy extends Entity {
 
     public static final int ID = 1;
 
@@ -22,7 +27,22 @@ public abstract class Enemy extends Entity{
         this.damageType = damageType;
     }
 
+    @Override
+    public Enemy build() {
+        super.build();
 
+        System.out.println("Enter " + getName() + "'s damage type: ");
+        damageType = UserInputHelper.getStringInput();
+
+        damageLevel = UserInputHelper.INVALID_INPUT;
+
+        System.out.println("Enter " + getName() + "'s damage level (integer): ");
+
+        while (damageLevel == UserInputHelper.INVALID_INPUT)
+            damageLevel = UserInputHelper.getIntInput();
+
+        return this;
+    }
 
     public String getDamageType() { return damageType; }
     public void setDamageType(String damageType) { this.damageType = damageType; }
@@ -37,17 +57,5 @@ public abstract class Enemy extends Entity{
                 + "\nDamage Level: " + damageLevel;
     }
 
-    public void ready() {
 
-    }
-
-
-    public void speak() {
-
-    }
-
-
-    public void move() {
-
-    }
 }
