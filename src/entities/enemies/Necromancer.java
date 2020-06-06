@@ -61,11 +61,11 @@ public class Necromancer extends Enemy implements Transportable {
 
     @Override
     public void fly() {
-        System.out.println();
+        System.out.println(getClass().getSimpleName() + " " + getName() + " flies");
     }
 
     @Override
     public void teleport() {
-
+        System.out.println(getClass().getSimpleName() + " " + getName() + " teleports");
     }
 }

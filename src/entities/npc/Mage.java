@@ -2,7 +2,8 @@ package entities.npc;
 
 import util.UserInputHelper;
 
-public class Mage extends NPC {
+public class Mage extends NPC implements interfaces.Transportable {
+
 
     public static final int ID = 21;
 
@@ -74,5 +75,15 @@ public class Mage extends NPC {
 
     public void setYearsPracticing(int yearsPracticing) {
         this.yearsPracticing = yearsPracticing;
+    }
+
+    @Override
+    public void fly() {
+        System.out.println(getClass().getSimpleName() + " " + getName() + " flies");
+    }
+
+    @Override
+    public void teleport() {
+        System.out.println(getClass().getSimpleName() + " " + getName() + " teleports");
     }
 }
