@@ -1,13 +1,14 @@
 package entities.enemies;
 
+import interfaces.Transportable;
 import util.UserInputHelper;
 
-public class Necromancer extends Enemy{
+public class Necromancer extends Enemy implements Transportable {
 
     public static final int ID = 12;
 
     private final int DEFAULT_NUM_MINIONS = 1;
-    private final boolean DEFAULT_ELITE  = false;
+    private final boolean DEFAULT_ELITE = false;
 
     private boolean elite;
     private int numMinions;
@@ -27,8 +28,8 @@ public class Necromancer extends Enemy{
     @Override
     public String toString() {
         return super.toString()
-                +"\nMax Number of Minions: " + numMinions
-                +"\nElite: " + (elite ? "Yes" : "No");
+                + "\nMax Number of Minions: " + numMinions
+                + "\nElite: " + (elite ? "Yes" : "No");
     }
 
     @Override
@@ -55,6 +56,16 @@ public class Necromancer extends Enemy{
 
     public void move() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " moves");
+
+    }
+
+    @Override
+    public void fly() {
+        System.out.println();
+    }
+
+    @Override
+    public void teleport() {
 
     }
 }
