@@ -1,6 +1,6 @@
 package entities;
 
-import org.jetbrains.annotations.NotNull;
+
 import util.UserInputHelper;
 
 public abstract class Entity implements Comparable<Entity>
@@ -24,9 +24,9 @@ public abstract class Entity implements Comparable<Entity>
 	}
 
 	/**
-	 * @param name
-	 * @param lives
-	 * @param health
+	 * @param name String name of entity
+	 * @param lives Integer number of lives
+	 * @param health Integer amount of health
 	 */
 	protected Entity(String name, int lives, int health)
 	{
@@ -74,12 +74,8 @@ public abstract class Entity implements Comparable<Entity>
 	}
 	
 	@Override
-	public int compareTo(@NotNull Entity o) {
-		if (getHealth() == o.getHealth())
-			return 0;
-		if (getHealth() > o.getHealth())
-			return 1;
-		return -1;
+	public int compareTo(Entity o) {
+		return Integer.compare(getHealth(), o.getHealth());
 	}
 	
 	public boolean equals(String otherName)

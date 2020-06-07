@@ -23,7 +23,7 @@ public class ProjectApp {
     public ProjectApp() {
         entityMap = new LinkedHashMap<>();
         
-        /* For testing purposes
+        /* For testing purposes */
         
         Mage mage = new Mage("magey", 1, 70, "frostbolt", 1, "frost", 50);
         Trainer trainer = new Trainer("trainerguy", 1, 10, "spell", 1, "nothing");
@@ -31,8 +31,8 @@ public class ProjectApp {
         entityMap.put(mage.getName(), mage);
         entityMap.put(trainer.getName(), trainer);
         entityMap.put(trainer1.getName(), trainer1);
-        */
-        System.out.println("WHy the fuck this now commiting hello");
+
+
         
         displayMenu();
     }
