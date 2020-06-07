@@ -1,5 +1,6 @@
 package entities;
 
+import org.jetbrains.annotations.NotNull;
 import util.UserInputHelper;
 
 public abstract class Entity {

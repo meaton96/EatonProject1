@@ -5,9 +5,8 @@ import entities.enemies.Rogue;
 import entities.npc.Mage;
 import entities.npc.NPC;
 import entities.npc.Trainer;
-
+import util.UserInputHelper;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -305,36 +304,7 @@ public class ProjectApp {
         */
         return null;
     }
-
-    /**
-     *
-     * @param x integer to reduce to 1 digit
-     * @return integer the first digit of the parameter
-     */
-    private int firstDigit(int x) {
-        while (x > 9) {
-            x /= 10;
-        }
-        return x;
-    }
-
-    /**
-     * get one line of input from the user
-     * @return the string input from the user
-     */
-    private String getUserInputAnswer() {
-
-        String inputString = "";
-        try {
-
-            inputString = reader.readLine();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return inputString;
-    }
-
+    
     /**
      * print the list of entities
      */

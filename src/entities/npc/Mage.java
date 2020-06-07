@@ -17,7 +17,17 @@ public class Mage extends NPC implements interfaces.Transportable {
         this.elementType = DEFAULT_ELEMENTAL_TYPE;
         this.yearsPracticing = DEFAULT_YEARS_PRACTICED;
     }
-
+    
+    /**
+     *
+     * @param name String name of entity
+     * @param lives integer number of lives
+     * @param health integer amount of health
+     * @param helpfulSkill String name of helpful skill
+     * @param skillLevel integer skill level
+     * @param elementType String damage/element type
+     * @param yearsPracticing integer years spent practicing being a mage
+     */
     public Mage(String name, int lives, int health, String helpfulSkill, int skillLevel, String elementType, int yearsPracticing) {
         super(name, lives, health, helpfulSkill, skillLevel);
         this.elementType = elementType;
