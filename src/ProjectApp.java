@@ -32,6 +32,7 @@ public class ProjectApp {
         entityMap.put(trainer.getName(), trainer);
         entityMap.put(trainer1.getName(), trainer1);
         */
+        System.out.println("WHy the fuck this now commiting hello");
         
         displayMenu();
     }
