@@ -2,7 +2,7 @@ package interfaces;
 
 public interface Transportable {
 
-    public abstract void fly();
-    public abstract void teleport();
+    void fly();
+    void teleport();
 
 }
