@@ -2,7 +2,9 @@ package entities.enemies;
 
 import entities.Entity;
 import util.UserInputHelper;
-
+/**
+ * @author Michael Eaton
+ */
 
 /**
  * class representing an Enemy entity

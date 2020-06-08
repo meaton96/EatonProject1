@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"util","l":"UserInputHelper"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"entities.enemies","l":"Enemy"},{"p":"entities","l":"Entity"},{"p":"entities.npc","l":"Mage"},{"p":"<Unnamed>","l":"MainApp"},{"p":"entities.enemies","l":"Necromancer"},{"p":"entities.npc","l":"NPC"},{"p":"<Unnamed>","l":"ProjectApp"},{"p":"entities.enemies","l":"Rogue"},{"p":"entities.npc","l":"Trainer"},{"p":"interfaces","l":"Transportable"},{"p":"util","l":"UserInputHelper"}]

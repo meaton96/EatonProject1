@@ -1,7 +1,8 @@
 package entities;
-
-
 import util.UserInputHelper;
+/**
+ * @author Michael Eaton
+ */
 
 /**
  * Class representing an entity/player that can perform actions and has basic attributes

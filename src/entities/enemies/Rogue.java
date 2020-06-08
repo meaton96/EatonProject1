@@ -1,7 +1,9 @@
 package entities.enemies;
 
 import util.UserInputHelper;
-
+/**
+ * @author Michael Eaton
+ */
 /**
  * class representing a rogue type enemy
  */

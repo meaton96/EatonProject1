@@ -2,7 +2,9 @@ package entities.enemies;
 
 import interfaces.Transportable;
 import util.UserInputHelper;
-
+/**
+ * @author Michael Eaton
+ */
 /**
  * class representing a Necromancer type enemy
  */

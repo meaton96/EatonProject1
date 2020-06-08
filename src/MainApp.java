@@ -1,8 +1,10 @@
-public class MainApp
-{
+/**
+ * @author Michael Eaton
+ */
 
-	public static void main(String[] args)
-	{
+public class MainApp {
+
+	public static void main(String[] args) {
 		new ProjectApp().run();
 	}
 }

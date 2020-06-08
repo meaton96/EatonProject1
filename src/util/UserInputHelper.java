@@ -3,6 +3,9 @@ package util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+/**
+ * @author Michael Eaton
+ */
 
 /**
  * Class to help with user input for this program

@@ -1,7 +1,9 @@
 package entities.npc;
 
 import util.UserInputHelper;
-
+/**
+ * @author Michael Eaton
+ */
 /**
  * class representing a friendly mage entity
  */

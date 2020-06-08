@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"util"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"entities"},{"l":"entities.enemies"},{"l":"entities.npc"},{"l":"interfaces"},{"l":"util"}]
