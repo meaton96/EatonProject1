@@ -2,6 +2,9 @@ package entities.npc;
 
 import util.UserInputHelper;
 
+/**
+ * class representing a friendly mage entity
+ */
 public class Mage extends NPC implements interfaces.Transportable {
 
 
@@ -13,11 +16,14 @@ public class Mage extends NPC implements interfaces.Transportable {
     private String elementType;
     private int yearsPracticing;
 
+    /**
+     * default constructor to init class fields to default values
+     */
     public Mage() {
         this.elementType = DEFAULT_ELEMENTAL_TYPE;
         this.yearsPracticing = DEFAULT_YEARS_PRACTICED;
     }
-    
+
     /**
      *
      * @param name String name of entity
@@ -34,6 +40,11 @@ public class Mage extends NPC implements interfaces.Transportable {
         this.yearsPracticing = yearsPracticing;
     }
 
+    /**
+     * to String to assist in printing information on the Mage
+     *
+     * @return a String with information about the Mage
+     */
     @Override
     public String toString() {
         return super.toString()
@@ -41,6 +52,11 @@ public class Mage extends NPC implements interfaces.Transportable {
                 + "\nYears Spent Practicing: " + yearsPracticing;
     }
 
+    /**
+     * method to assist in initializing the class fields with user provided values
+     *
+     * @return this class
+     */
     @Override
     public Mage build() {
         super.build();
@@ -56,43 +72,67 @@ public class Mage extends NPC implements interfaces.Transportable {
         return this;
     }
 
+    /**
+     * Prints out a ready message
+     */
     public void ready() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " is ready to fire off some spells");
 
     }
 
 
+    /**
+     * prints out what the Mages says
+     */
     public void speak() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " says \"Sela'ma ashal'anore!\"");
     }
 
-
+    /**
+     * prints out a movement message
+     */
     public void move() {
-        System.out.println(getClass().getSimpleName() + " " + getClass() + " moves");
+        System.out.println(getClass().getSimpleName() + " " + getName() + " moves");
     }
 
+    /**
+     * @return String element type of the Mage
+     */
     public String getElementType() {
         return elementType;
     }
 
+    /**
+     * @param elementType String element type of the Mage
+     */
     public void setElementType(String elementType) {
         this.elementType = elementType;
     }
 
+    /**
+     * @return integer of number of years the Mage spent practicing magic
+     */
     public int getYearsPracticing() {
         return yearsPracticing;
     }
 
+    /**
+     * @param yearsPracticing integer of number of years the Mage spent practicing magic
+     */
     public void setYearsPracticing(int yearsPracticing) {
         this.yearsPracticing = yearsPracticing;
     }
 
-    @Override
+    /**
+     * prints out a flying message
+     */
     public void fly() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " flies");
     }
 
-    @Override
+    /**
+     * prints out a teleporting message
+     */
     public void teleport() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " teleports");
     }

@@ -2,7 +2,10 @@ package entities.enemies;
 
 import util.UserInputHelper;
 
-public class Rogue extends Enemy{
+/**
+ * class representing a rogue type enemy
+ */
+public class Rogue extends Enemy {
 
     public static final int ID = 11;
 
@@ -12,18 +15,35 @@ public class Rogue extends Enemy{
     private int sneakLevel;
     private boolean master;
 
+    /**
+     * default constructor to init class fields to default values
+     */
     public Rogue() {
         super();
         this.sneakLevel = DEFAULT_SNEAK;
         this.master = DEFAULT_MASTER;
     }
 
+    /**
+     * @param name        String name of entity
+     * @param lives       integer number of lives
+     * @param health      integer amount of health
+     * @param damageType  String damage type of the enemy
+     * @param damageLevel integer damage level of the enemy
+     * @param master      boolean if the rogue is a master rogue or not
+     * @param sneakLevel  integer level of sneakiness
+     */
     public Rogue(String name, int lives, int health, String damageType, int damageLevel, int sneakLevel, boolean master) {
         super(name, lives, health, damageType, damageLevel);
         this.sneakLevel = sneakLevel;
         this.master = master;
     }
 
+    /**
+     * to string to assist in printing
+     *
+     * @return String with information on the Rogue
+     */
     @Override
     public String toString() {
 
@@ -32,6 +52,11 @@ public class Rogue extends Enemy{
                 + "\nMasterful: " + (master ? "Yes" : "No");
     }
 
+    /**
+     * method to assist in initializing class fields with user entered values
+     *
+     * @return this class
+     */
     @Override
     public Rogue build() {
         super.build();
@@ -49,16 +74,24 @@ public class Rogue extends Enemy{
         return this;
     }
 
+    /**
+     * Prints out a ready message
+     */
     public void ready() {
         System.out.println(getName() + " is ready for mischief");
     }
 
-
+    /**
+     * prints out what the Rogue says
+     */
     public void speak() {
         System.out.println(getName() + " is talking quietly");
     }
 
 
+    /**
+     * prints out a movement message
+     */
     public void move() {
         System.out.println(getName() + " is sneaking");
     }

@@ -3,6 +3,9 @@ package entities.enemies;
 import interfaces.Transportable;
 import util.UserInputHelper;
 
+/**
+ * class representing a Necromancer type enemy
+ */
 public class Necromancer extends Enemy implements Transportable {
 
     public static final int ID = 12;
@@ -13,18 +16,35 @@ public class Necromancer extends Enemy implements Transportable {
     private boolean elite;
     private int numMinions;
 
+    /**
+     * default constructor to init class fields to default values
+     */
     public Necromancer() {
         super();
         this.elite = DEFAULT_ELITE;
         this.numMinions = DEFAULT_NUM_MINIONS;
     }
 
+    /**
+     * @param name        String name of entity
+     * @param lives       integer number of lives
+     * @param health      integer amount of health
+     * @param damageType  String damage type of the enemy
+     * @param damageLevel integer damage level of the enemy
+     * @param elite       boolean if the rogue is a elite necromancer or not
+     * @param numMinions  integer maximum number of minions the necromancer can summon
+     */
     public Necromancer(String name, int lives, int health, String damageType, int damageLevel, boolean elite, int numMinions) {
         super(name, lives, health, damageType, damageLevel);
         this.elite = elite;
         this.numMinions = numMinions;
     }
 
+    /**
+     * to string to assist in printing
+     *
+     * @return String with information on the Rogue
+     */
     @Override
     public String toString() {
         return super.toString()
@@ -32,6 +52,11 @@ public class Necromancer extends Enemy implements Transportable {
                 + "\nElite: " + (elite ? "Yes" : "No");
     }
 
+    /**
+     * method to assist in initializing class fields with user entered values
+     *
+     * @return this class
+     */
     @Override
     public Necromancer build() {
         super.build();
@@ -44,27 +69,39 @@ public class Necromancer extends Enemy implements Transportable {
         return this;
     }
 
+    /**
+     * Prints out a ready message
+     */
     public void ready() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " is ready to summon more minions");
     }
 
-
+    /**
+     * prints out what the Necromancer says
+     */
     public void speak() {
         System.out.println(getName() + " says \"the dead shall serve\"");
     }
 
 
+    /**
+     * prints out a movement message
+     */
     public void move() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " moves");
 
     }
 
-    @Override
+    /**
+     * prints out a flying message
+     */
     public void fly() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " flies");
     }
 
-    @Override
+    /**
+     * prints out a teleporting message
+     */
     public void teleport() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " teleports");
     }

@@ -4,9 +4,13 @@ import entities.enemies.Rogue;
 import entities.npc.Mage;
 import entities.npc.Trainer;
 import util.UserInputHelper;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The Class to run the project application
@@ -22,27 +26,30 @@ public class ProjectApp {
      */
     public ProjectApp() {
         entityMap = new LinkedHashMap<>();
-        
+
         /* For testing purposes */
-        
+
         Mage mage = new Mage("magey", 1, 70, "frostbolt", 1, "frost", 50);
         Trainer trainer = new Trainer("trainerguy", 1, 10, "spell", 1, "nothing");
         Trainer trainer1 = new Trainer("idiot", 1, 150, "spelll", 2, "nothing");
         entityMap.put(mage.getName(), mage);
         entityMap.put(trainer.getName(), trainer);
         entityMap.put(trainer1.getName(), trainer1);
+    }
 
-    
-        
+    /**
+     * run the main menu
+     */
+    public void run() {
         displayMenu();
     }
-    
-    
+
+
     /**
      * Display the list of menu options for performing actions on the list of entities
      */
     public void displayMenu() {
-        
+
         System.out.println("____________________________________________________"
                 + "\n1. View Entities"
                 + "\n2. Add Entity"
@@ -67,6 +74,7 @@ public class ProjectApp {
                 break;
             case 5:
                 System.out.println("Ending Program");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Invalid input please try again\n");
@@ -87,21 +95,21 @@ public class ProjectApp {
         if (e != null) {
             System.out.println("Entity " + e.getName() + " found in list\n");
             boolean canFly = (e instanceof Mage || e instanceof Necromancer);
-            
+
             System.out.println("Choose an action to perform (Enter a number): "
-                                + "\n1. Speak"
-                                + "\n2. Ready Up"
-                                + "\n3. Move"
-                                + (canFly ? "\n4. Fly" + "\n5. Teleport" : ""));
-            
+                    + "\n1. Speak"
+                    + "\n2. Ready Up"
+                    + "\n3. Move"
+                    + (canFly ? "\n4. Fly" + "\n5. Teleport" : ""));
+
             int action = UserInputHelper.INVALID_INPUT;
             while (action == UserInputHelper.INVALID_INPUT)
-                    action = UserInputHelper.getMenuInput(canFly ? 3 : 5);
-            
-            
+                action = UserInputHelper.getMenuInput(canFly ? 5 : 3);
+
+
             //not having these methods in the base class makes this so much messier
             switch (action) {
-                case 1 :
+                case 1:
                     if (e instanceof Mage)
                         ((Mage) e).speak();
                     else if (e instanceof Necromancer)
@@ -167,10 +175,10 @@ public class ProjectApp {
         String name;
         System.out.println("Enter entity's name for deletion: ");
         name = UserInputHelper.getStringInput();
-        //System.out.println(entityMap);
         
         if (entityMap.remove(name) != null) {
             System.out.println("Entity " + name + " was successfully removed from the list");
+            displayMenu();
             return;
         }
         System.out.println("Entity " + name + " was not found in the list would you like to try entering the name again? (Enter y/n)");
@@ -180,7 +188,6 @@ public class ProjectApp {
             if (c < 97) {
                 c += 32;
             }
-            //System.out.println("**" + c);
             if (c != 'y' && c != 'n') {
                 System.out.println("Invalid input enter y/n");
             }

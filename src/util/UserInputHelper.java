@@ -61,6 +61,8 @@ public abstract class UserInputHelper
 	/**
 	 * get an integer input from the user
 	 *
+	 * @param max integer maximum value the method will accept from the user, exlusive
+	 * @param min integer minimum value the method will accept fromthe user, exclusive
 	 * @return the integer input that the user entered, if they entered a non integer string returns -1
 	 * only integers between min and max, inclusive, will be returned
 	 */
@@ -113,19 +115,17 @@ public abstract class UserInputHelper
 	 * @return the user choice, an integer (0, max]
 	 * return -1 if an invalid option was entered
 	 */
-	public static int getMenuInput(int max)
-	{
-		try
-		{
+	public static int getMenuInput(int max) {
+		try {
 			String inputString = READER.readLine();
-			if (inputString.charAt(0) < 49 || inputString.charAt(0) > max + 48)
-			{
+			if (inputString.isEmpty())
+				return INVALID_INPUT;
+			if (inputString.charAt(0) < 49 || inputString.charAt(0) > max + 48) {
 				return INVALID_INPUT;
 			}
 
 			return inputString.charAt(0) - 48;
-		}
-		catch (IOException e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 			return INVALID_INPUT;
