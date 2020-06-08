@@ -32,7 +32,7 @@ public class ProjectApp {
         entityMap.put(trainer.getName(), trainer);
         entityMap.put(trainer1.getName(), trainer1);
 
-
+    
         
         displayMenu();
     }
@@ -75,6 +75,9 @@ public class ProjectApp {
         }
     }
     
+    /**
+     * Perform an action on an entity, action and entity are chosen by the user
+     */
     public void performAction() {
         Entity e;
         System.out.println("Enter the name of the entity you would like to perform an action with: ");
@@ -273,7 +276,7 @@ public class ProjectApp {
             displayMenu();
         }
         
-        LinkedHashMap<String, Entity> sortedMap = new LinkedHashMap<>();
+        Map<String, Entity> sortedMap = new LinkedHashMap<>();
     
         entityMap.entrySet()
                 .stream()
