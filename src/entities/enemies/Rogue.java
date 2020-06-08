@@ -1,5 +1,9 @@
 package entities.enemies;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -7,24 +11,15 @@ import util.UserInputHelper;
 /**
  * class representing a rogue type enemy
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public class Rogue extends Enemy {
 
     public static final int ID = 11;
-
-    private final int DEFAULT_SNEAK = 1;
-    private final boolean DEFAULT_MASTER = false;
-
     private int sneakLevel;
     private boolean master;
-
-    /**
-     * default constructor to init class fields to default values
-     */
-    public Rogue() {
-        super();
-        this.sneakLevel = DEFAULT_SNEAK;
-        this.master = DEFAULT_MASTER;
-    }
 
     /**
      * @param name        String name of entity

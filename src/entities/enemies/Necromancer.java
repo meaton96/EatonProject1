@@ -1,6 +1,10 @@
 package entities.enemies;
 
 import interfaces.Transportable;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -8,25 +12,15 @@ import util.UserInputHelper;
 /**
  * class representing a Necromancer type enemy
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public class Necromancer extends Enemy implements Transportable {
 
     public static final int ID = 12;
-
-    private final int DEFAULT_NUM_MINIONS = 1;
-    private final boolean DEFAULT_ELITE = false;
-
     private boolean elite;
     private int numMinions;
-
-    /**
-     * default constructor to init class fields to default values
-     */
-    public Necromancer() {
-        super();
-        this.elite = DEFAULT_ELITE;
-        this.numMinions = DEFAULT_NUM_MINIONS;
-    }
-
     /**
      * @param name        String name of entity
      * @param lives       integer number of lives

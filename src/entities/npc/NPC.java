@@ -1,29 +1,24 @@
 package entities.npc;
 
 import entities.Entity;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 
 /**
  * Class representing a non player character helpful/friendly entity
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public abstract class NPC extends Entity {
 
     public static final int ID = 2;
-
-    private final String DEFAULT_SKILL = "Heal";
-    private final int DEFAULT_SKILL_LEVEL = 1;
-
     private String helpfulSkill;
     private int skillLevel;
-
-    /**
-     * default constructor to init class fields to default values
-     */
-    protected NPC() {
-        super();
-        this.helpfulSkill = DEFAULT_SKILL;
-        this.skillLevel = DEFAULT_SKILL_LEVEL;
-    }
 
     /**
      * @param name         String name of NPC passed to parent
@@ -37,7 +32,6 @@ public abstract class NPC extends Entity {
         this.helpfulSkill = helpfulSkill;
         this.skillLevel = skillLevel;
     }
-
     /**
      * method to assist in initializing the class fields with user provided values
      *
@@ -68,34 +62,6 @@ public abstract class NPC extends Entity {
         return super.toString()
                 + "\nSkill: " + helpfulSkill
                 + "\nSkill Level: " + skillLevel;
-    }
-
-    /**
-     * @return String of the name of the helpful skill of this NPC
-     */
-    public String getHelpfulSkill() {
-        return helpfulSkill;
-    }
-
-    /**
-     * @param helpfulSkill String of the name of the helpful skill of this NPC
-     */
-    public void setHelpfulSkill(String helpfulSkill) {
-        this.helpfulSkill = helpfulSkill;
-    }
-
-    /**
-     * @return integer skill level of the NPC
-     */
-    public int getSkillLevel() {
-        return skillLevel;
-    }
-
-    /**
-     * @param skillLevel integer skill level of the NPC
-     */
-    public void setSkillLevel(int skillLevel) {
-        this.skillLevel = skillLevel;
     }
 
 

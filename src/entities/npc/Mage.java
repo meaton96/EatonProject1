@@ -1,5 +1,9 @@
 package entities.npc;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -7,27 +11,18 @@ import util.UserInputHelper;
 /**
  * class representing a friendly mage entity
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public class Mage extends NPC implements interfaces.Transportable {
 
 
     public static final int ID = 21;
-
-    private final String DEFAULT_ELEMENTAL_TYPE = "Frost";
-    private final int DEFAULT_YEARS_PRACTICED = 0;
-
     private String elementType;
     private int yearsPracticing;
 
     /**
-     * default constructor to init class fields to default values
-     */
-    public Mage() {
-        this.elementType = DEFAULT_ELEMENTAL_TYPE;
-        this.yearsPracticing = DEFAULT_YEARS_PRACTICED;
-    }
-
-    /**
-     *
      * @param name String name of entity
      * @param lives integer number of lives
      * @param health integer amount of health
@@ -82,7 +77,6 @@ public class Mage extends NPC implements interfaces.Transportable {
 
     }
 
-
     /**
      * prints out what the Mages says
      */
@@ -95,34 +89,6 @@ public class Mage extends NPC implements interfaces.Transportable {
      */
     public void move() {
         System.out.println(getClass().getSimpleName() + " " + getName() + " moves");
-    }
-
-    /**
-     * @return String element type of the Mage
-     */
-    public String getElementType() {
-        return elementType;
-    }
-
-    /**
-     * @param elementType String element type of the Mage
-     */
-    public void setElementType(String elementType) {
-        this.elementType = elementType;
-    }
-
-    /**
-     * @return integer of number of years the Mage spent practicing magic
-     */
-    public int getYearsPracticing() {
-        return yearsPracticing;
-    }
-
-    /**
-     * @param yearsPracticing integer of number of years the Mage spent practicing magic
-     */
-    public void setYearsPracticing(int yearsPracticing) {
-        this.yearsPracticing = yearsPracticing;
     }
 
     /**

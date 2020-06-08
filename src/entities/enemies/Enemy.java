@@ -1,6 +1,10 @@
 package entities.enemies;
 
 import entities.Entity;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -9,24 +13,15 @@ import util.UserInputHelper;
 /**
  * class representing an Enemy entity
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public abstract class Enemy extends Entity {
 
     public static final int ID = 1;
-
-    private final String DEFAULT_DAMAGE_TYPE = "Physical";
-    private final int DEFAULT_DAMAGE_LEVEL = 1;
-
     private String damageType;
     private int damageLevel;
-
-    /**
-     * default constructor to init all variables
-     */
-    protected Enemy() {
-        super();
-        damageLevel = DEFAULT_DAMAGE_LEVEL;
-        damageType = DEFAULT_DAMAGE_TYPE;
-    }
 
     /**
      * @param name        String name of the entity passed to parent class
@@ -40,6 +35,10 @@ public abstract class Enemy extends Entity {
         this.damageLevel = damageLevel;
         this.damageType = damageType;
     }
+
+    /**
+     * default constructor to init all variables
+     */
 
     /**
      * method to assist in initializing the class fields with user provided values
@@ -61,34 +60,6 @@ public abstract class Enemy extends Entity {
             damageLevel = UserInputHelper.getIntInput();
 
         return this;
-    }
-
-    /**
-     * @return String damage type of enemy
-     */
-    public String getDamageType() {
-        return damageType;
-    }
-
-    /**
-     * @param damageType String damage type of enemy
-     */
-    public void setDamageType(String damageType) {
-        this.damageType = damageType;
-    }
-
-    /**
-     * @return integer damage level of the enemy
-     */
-    public int getDamageLevel() {
-        return damageLevel;
-    }
-
-    /**
-     * @param damageLevel integer damage level of the enemy
-     */
-    public void setDamageLevel(int damageLevel) {
-        this.damageLevel = damageLevel;
     }
 
     /**

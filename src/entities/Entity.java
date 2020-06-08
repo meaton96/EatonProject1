@@ -1,4 +1,8 @@
 package entities;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -8,6 +12,10 @@ import util.UserInputHelper;
  * Class representing an entity/player that can perform actions and has basic attributes
  * such as name lives and health
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public abstract class Entity implements Comparable<Entity>
 {
 
@@ -19,16 +27,6 @@ public abstract class Entity implements Comparable<Entity>
 
 	private String name;
 	private int lives, health;
-
-	/**
-	 * default constructor init name lives and health to default values
-	 */
-	protected Entity() {
-		numEntities++;
-		name = getClass().getSimpleName() + " " + numEntities;
-		lives = 1;
-		health = 100;
-	}
 
 	/**
 	 * @param name   String name of entity
@@ -85,56 +83,16 @@ public abstract class Entity implements Comparable<Entity>
 	}
 
 	/**
-	 * @param o Entity to compare this entity to
+	 * @param e Entity to compare this entity to
 	 * @return integer comparing the health of the entities
 	 * -1 if health is lower than the Entity o
 	 * 0 if the health is the same
 	 * 1 if the health is greater than the Entity o
 	 */
 	@Override
-	public int compareTo(Entity o) {
-		return Integer.compare(getHealth(), o.getHealth());
+	public int compareTo(Entity e) {
+		return Integer.compare(getHealth(), e.getHealth());
 	}
 
-	/**
-	 * @return String name of entity
-	 */
-	public String getName() {
-		return name;
-	}
 
-	/**
-	 * @param name String name of entity
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return integer number of lives of the entity
-	 */
-	public int getLives() {
-		return lives;
-	}
-
-	/**
-	 * @param lives integer number of lives
-	 */
-	public void setLives(int lives) {
-		this.lives = lives;
-	}
-
-	/**
-	 * @return integer amount of health of the entity
-	 */
-	public int getHealth() {
-		return health;
-	}
-
-	/**
-	 * @param health integer amount of health
-	 */
-	public void setHealth(int health) {
-		this.health = health;
-	}
 }

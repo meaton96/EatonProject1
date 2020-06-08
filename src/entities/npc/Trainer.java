@@ -1,5 +1,9 @@
 package entities.npc;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import util.UserInputHelper;
 /**
  * @author Michael Eaton
@@ -7,20 +11,14 @@ import util.UserInputHelper;
 /**
  * class representing a friendly Trainer to teach skills
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
+@EqualsAndHashCode
 public class Trainer extends NPC {
 
     public static final int ID = 22;
-
-    private final String DEFAULT_EXPERTISE = "None";
-
     private String expertise;
-
-    /**
-     * default constructor to init class fields to default values
-     */
-    public Trainer() {
-        expertise = DEFAULT_EXPERTISE;
-    }
 
     /**
      * @param name         String name of entity
@@ -34,7 +32,6 @@ public class Trainer extends NPC {
         super(name, lives, health, helpfulSkill, skillLevel);
         this.expertise = expertise;
     }
-
     /**
      * to string to assist in printing
      *
@@ -82,18 +79,4 @@ public class Trainer extends NPC {
         System.out.println(getClass().getSimpleName() + " " + getName() + " moves to a new location");
     }
 
-
-    /**
-     * @return String expertise of the Trainer
-     */
-    public String getExpertise() {
-        return expertise;
-    }
-
-    /**
-     * @param expertise String expertise of the Trainer
-     */
-    public void setExpertise(String expertise) {
-        this.expertise = expertise;
-    }
 }
